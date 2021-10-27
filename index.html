@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/font.css">
+    <script src="css/jquery.css"></script>    
+    <link rel="icon" href="images/fav.png"  sizes="16*16" type="png">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <title>Faiza Satti Resume</title>
+
+
+    <script type="text/javascript">
+
+      $(document).ready(function(){
+        $("#inputContainer").show("slow");
+        $("#loginContainer").hide("slow");
+      });
+
+
+    function ChangeScreenforLogin(){
+      $("#inputContainer").hide("slow");
+      document.getElementById("MainScreenHeading").innerHTML='Login Into Your Account';
+      $("#loginContainer").show("slow");
+    }
+
+    function ChangeScreenforRegister(){
+      $("#inputContainer").show("slow");
+      document.getElementById("MainScreenHeading").innerHTML='Create Your Account';
+      $("#loginContainer").hide("slow");
+    }
+      // $("#login").click(function(){
+
+        
+
+      // });
+
+      // function zoom() {
+      //     document.body.style.zoom = "90%" 
+      // }
+
+
+      var flag=0;
+
+      var check = function() {
+      if (document.getElementById('pass').value ==document.getElementById('confirmPass').value) {
+        document.getElementById('message').style.color = 'green';
+        // $("#message").addClass("alert alert-success");  
+        flag=1;
+        document.getElementById('message').style.border = '2px solid green';
+        document.getElementById('message').innerHTML = 'Passwords are Matching';
+      } else {
+        document.getElementById('message').style.color = 'red';
+        // $("#message").addClass("alert alert-danger");  
+        flag=0;
+        document.getElementById('message').style.border = '2px solid red';
+        document.getElementById('message').innerHTML = 'Passwords are not Matching';
+        //disable submit button
+      }
+    }
+
+    
+      function checkEmail() {
+        var email = document.getElementById('emailID');
+        var filter = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+        if (!filter.test(email.value)) {
+          document.getElementById('message').style.color = 'red';
+        // $("#message").addClass("alert alert-danger");  
+        flag=1;
+        document.getElementById('message').style.border = '2px solid red';
+        document.getElementById('message').innerHTML ='Please provide a valid email address';
+        email.focus;
+            flag=0;
+            return false;
+        }
+        else{
+          flag=1;
+        }
+
+        if(flag==1){
+          document.getElementById('message').style.color = 'green';
+          document.getElementById('message').style.border = '2px solid green';
+          document.getElementById('message').innerHTML = 'Your Account has been Created Successfully';
+        }
+    }
+
+
+</script>
+</head>
+<body>
+        <div class="mainContainer">
+
+                    <!--left section-->
+
+            <div class="section_left text-center">
+              <button type="button" onclick="ChangeScreenforLogin()" class="btn btn-secondary">Login</button>
+              <button type="button" onclick="ChangeScreenforRegister()" class="btn btn-secondary">Register</button>
+            </div>
+
+           
+
+
+            <!-- here goes main demanded section-->
+            <!-- right section -->
+
+
+            <div class="section_right">
+                <h2 id="MainScreenHeading" style="margin-top: 100px;">Create Your Account</h2>
+                <hr class="One">
+
+                 <!-- login section -->
+
+            <div id="loginContainer">
+
+              <div class="input-group mb-3">
+                <span class="input-group-text">Enter Username</span>
+                <input type="text" id="Username" class="form-control"  required>
+              </div>
+
+              <div class="input-group mb-3">
+                <span class="input-group-text">Enter Password</span>
+                <input type="password" id="pass" class="form-control"  required>
+              </div>
+
+              <div class="text-center">
+                <button type="button" class="btn btn-primary" onclick='checkEmail();'>Login</button>
+              </div>
+
+            </div>
+
+                <div id="inputContainer">
+
+                <div class="input-group mb-3">
+                  <span class="input-group-text">Enter Name</span>
+                  <input type="text"  id="name" class="form-control" required>
+                </div>
+
+                <div class="input-group mb-3">
+                  <span class="input-group-text" >Enter Email ID</span>
+                  <input type="email" id="emailID" class="form-control" required>
+                </div>
+
+                <div class="input-group mb-3">
+                  <span class="input-group-text">Enter Username</span>
+                  <input type="text" id="Username" class="form-control"  required>
+                </div>
+
+                <div class="input-group mb-3">
+                  <span class="input-group-text">Enter Password</span>
+                  <input type="password" id="pass" class="form-control"  required>
+                </div>
+
+                <div class="input-group mb-3">
+                  <span class="input-group-text" >Confirm Password</span>
+                  <input type="password" id="confirmPass" class="form-control" onkeyup='check();' required>
+                </div>
+                <div id="message" style="margin-bottom: 20px;"></div>
+
+                <!-- submit button -->
+                <div class="text-center">
+                    <button type="button" class="btn btn-primary" onclick='checkEmail();'>Register Me</button>
+                </div>
+              </div>
+            </div>
+
+        </div>
+</body>
+</html>
